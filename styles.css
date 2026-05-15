@@ -210,7 +210,8 @@ input {
 #nextButton,
 #awardButton,
 #voidButton,
-#endButton {
+#endButton,
+.reveal-button {
   min-height: 42px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -221,7 +222,8 @@ input {
 }
 
 #nextButton,
-#awardButton {
+#awardButton,
+.reveal-button {
   padding: 0 18px;
   color: #fff;
   background: var(--blue);
@@ -242,6 +244,11 @@ input {
 #endButton {
   color: var(--ink);
   background: #f8fafc;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 
 .answer-panel {
@@ -292,6 +299,11 @@ input {
   gap: 10px;
   margin-top: 22px;
   min-height: 220px;
+}
+
+.reveal-button {
+  justify-self: end;
+  margin-top: 18px;
 }
 
 .empty-chart {

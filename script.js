@@ -5,6 +5,7 @@ const state = {
   scores: new Map(),
   roundStartedAt: performance.now(),
   roundClosed: false,
+  answerRevealed: false,
 };
 
 const stage = document.querySelector("#stage");
@@ -26,6 +27,7 @@ const playerNames = document.querySelector("#playerNames");
 const awardButton = document.querySelector("#awardButton");
 const voidButton = document.querySelector("#voidButton");
 const endButton = document.querySelector("#endButton");
+const revealButton = document.querySelector("#revealButton");
 const scoreChart = document.querySelector("#scoreChart");
 const result = document.querySelector("#result");
 const resultImage = document.querySelector("#resultImage");
@@ -136,12 +138,14 @@ const renderScores = () => {
 };
 
 const showAnswer = (label) => {
+  state.answerRevealed = true;
   result.hidden = false;
   resultImage.src = state.answer.image;
   resultImage.alt = `${state.answer.name} 사진`;
   resultState.textContent = label;
   resultName.textContent = state.answer.name;
   resultRole.textContent = state.answer.role;
+  updateJudgeButtons();
 };
 
 const closeRound = (label) => {
@@ -149,8 +153,15 @@ const closeRound = (label) => {
   showAnswer(label);
 };
 
+const updateJudgeButtons = () => {
+  const canJudge = state.answerRevealed && !state.roundClosed;
+  awardButton.disabled = !canJudge;
+  voidButton.disabled = !canJudge;
+  revealButton.disabled = state.answerRevealed || state.roundClosed;
+};
+
 const awardPoint = () => {
-  if (state.roundClosed) return;
+  if (state.roundClosed || !state.answerRevealed) return;
   const name = winnerInput.value.trim();
   if (!name) {
     winnerInput.focus();
@@ -163,9 +174,14 @@ const awardPoint = () => {
 };
 
 const voidRound = () => {
-  if (state.roundClosed) return;
+  if (state.roundClosed || !state.answerRevealed) return;
   winnerInput.value = "";
   closeRound("무효 처리");
+};
+
+const revealAnswer = () => {
+  if (state.roundClosed || state.answerRevealed) return;
+  showAnswer("정답 확인");
 };
 
 const timestamp = () => {
@@ -200,6 +216,7 @@ const nextRound = () => {
 
   state.round += 1;
   state.roundClosed = false;
+  state.answerRevealed = false;
   state.roundStartedAt = performance.now();
   result.hidden = true;
   winnerInput.value = "";
@@ -212,6 +229,7 @@ const nextRound = () => {
 
   setSegmentImage(state.answer);
   updateHints();
+  updateJudgeButtons();
   roundLabel.textContent = `Round ${state.round}`;
 };
 
@@ -221,6 +239,7 @@ nextButton.addEventListener("click", nextRound);
 awardButton.addEventListener("click", awardPoint);
 voidButton.addEventListener("click", voidRound);
 endButton.addEventListener("click", endGame);
+revealButton.addEventListener("click", revealAnswer);
 winnerInput.addEventListener("keydown", (event) => {
   if (event.key === "Enter") awardPoint();
 });
