@@ -20,6 +20,7 @@ const excludedQuizNames = new Set([
   "조승윤",
   "양준호",
   "김주현",
+  "Fengmiao Tu",
 ]);
 
 const isEligibleQuizPerson = (person) =>
