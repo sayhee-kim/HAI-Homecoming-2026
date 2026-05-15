@@ -35,7 +35,7 @@ MANUAL_CUTS = {
     "assets/people/031-이찬.jpg": (None, None, 0.498),
     "assets/people/033-김형민.png": (None, None, 0.488),
     "assets/people/034-김수지.png": (None, None, 0.469),
-    "assets/people/040-하종문.gif": (0.385, 0.455, 0.565),
+    "assets/people/040-하종문.gif": (0.365, 0.435, 0.545),
     "assets/people/042-윤명백.jpg": (None, None, 0.524),
 }
 
