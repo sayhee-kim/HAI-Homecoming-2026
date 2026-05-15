@@ -14,6 +14,30 @@ ROOT = Path(__file__).resolve().parents[1]
 PEOPLE_PATH = ROOT / "people.json"
 OUTPUT_DIR = ROOT / "assets" / "processed"
 TARGET = (450, 600)
+MANUAL_CUTS = {
+    "assets/people/001-윤병동.jpg": (0.235, 0.305, 0.415),
+    "assets/people/003-채민석.jpg": (None, None, 0.477),
+    "assets/people/005-유진오.jpg": (None, None, 0.486),
+    "assets/people/006-김태형.jpg": (None, None, 0.495),
+    "assets/people/008-이상경.jpg": (None, None, 0.508),
+    "assets/people/009-김용채.jpg": (0.268, 0.338, 0.443),
+    "assets/people/010-김민재.jpg": (None, None, 0.453),
+    "assets/people/014-김주현.jpg": (None, None, 0.466),
+    "assets/people/015-이정환.jpg": (0.258, 0.333, 0.438),
+    "assets/people/017-김민태.jpg": (0.318, None, 0.493),
+    "assets/people/019-이용민.jpg": (None, None, 0.44),
+    "assets/people/020-박승영.jpg": (None, None, 0.463),
+    "assets/people/022-한주환.jpg": (None, None, 0.467),
+    "assets/people/023-주나라.jpg": (0.292, 0.362, 0.472),
+    "assets/people/024-임우리.jpg": (0.3, 0.37, 0.475),
+    "assets/people/025-김세희.jpg": (0.31, 0.383, 0.488),
+    "assets/people/030-정의일.jpg": (0.303, 0.373, 0.478),
+    "assets/people/031-이찬.jpg": (None, None, 0.498),
+    "assets/people/033-김형민.png": (None, None, 0.488),
+    "assets/people/034-김수지.png": (None, None, 0.469),
+    "assets/people/040-하종문.gif": (0.25, 0.34, 0.47),
+    "assets/people/042-윤명백.jpg": (None, None, 0.524),
+}
 
 
 def clamp(value: float, low: float, high: float) -> float:
@@ -127,8 +151,27 @@ def cuts_from_face(processed: Image.Image) -> dict[str, list[float]]:
         "brow": [round(brow_top, 3), round(eye_top, 3)],
         "eyes": [round(eye_top, 3), round(nose_top, 3)],
         "nose": [round(nose_top, 3), round(mouth_top, 3)],
-        "mouth": [round(mouth_top, 3), round(mouth_bottom, 3)],
+        "mouth": [round(mouth_top, 3), 1.0],
     }
+
+
+def apply_manual_cuts(person: dict[str, str], cuts: dict[str, list[float]]) -> dict[str, list[float]]:
+    manual = MANUAL_CUTS.get(person.get("rawImage", ""))
+    if manual is None:
+        return cuts
+
+    eye_top, nose_top, mouth_top = manual
+    if eye_top is not None:
+        cuts["brow"][1] = eye_top
+        cuts["eyes"][0] = eye_top
+    if nose_top is not None:
+        cuts["eyes"][1] = nose_top
+        cuts["nose"][0] = nose_top
+    if mouth_top is not None:
+        cuts["nose"][1] = mouth_top
+        cuts["mouth"][0] = mouth_top
+    cuts["mouth"][1] = 1.0
+    return cuts
 
 
 def main() -> None:
@@ -144,7 +187,7 @@ def main() -> None:
         processed.save(output, quality=94, optimize=True)
 
         person["image"] = output.relative_to(ROOT).as_posix()
-        person["segments"] = cuts_from_face(processed)
+        person["segments"] = apply_manual_cuts(person, cuts_from_face(processed))
         person["sourceQuality"] = "site-thumb-upscaled"
 
     PEOPLE_PATH.write_text(json.dumps(people, ensure_ascii=False, indent=2), encoding="utf-8")
