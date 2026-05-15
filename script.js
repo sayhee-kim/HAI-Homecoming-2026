@@ -8,6 +8,8 @@ const state = {
   answerRevealed: false,
 };
 
+const excludedQuizNames = new Set(["최중명", "이찬", "박준호", "최종현", "박승영", "왕박락"]);
+
 const stage = document.querySelector("#stage");
 const segments = {
   brow: document.querySelector("#segmentBrow"),
@@ -247,7 +249,7 @@ winnerInput.addEventListener("keydown", (event) => {
 fetch("people.json")
   .then((response) => response.json())
   .then((people) => {
-    state.people = people.filter((person) => person.image);
+    state.people = people.filter((person) => person.image && !excludedQuizNames.has(person.name));
     playerNames.replaceChildren(
       ...state.people.map((person) => {
         const option = document.createElement("option");
