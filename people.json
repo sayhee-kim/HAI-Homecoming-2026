@@ -1132,5 +1132,32 @@
       ]
     },
     "sourceQuality": "site-thumb-upscaled"
+  },
+  {
+    "name": "윤병동",
+    "englishName": "Byeng D. Youn",
+    "role": "Professor",
+    "group": "professor",
+    "rawImage": "assets/people/043-윤병동.png",
+    "image": "assets/processed/043-윤병동.jpg",
+    "segments": {
+      "brow": [
+        0.284,
+        0.344
+      ],
+      "eyes": [
+        0.344,
+        0.431
+      ],
+      "nose": [
+        0.431,
+        0.541
+      ],
+      "mouth": [
+        0.541,
+        0.661
+      ]
+    },
+    "sourceQuality": "site-thumb-upscaled"
   }
 ]
