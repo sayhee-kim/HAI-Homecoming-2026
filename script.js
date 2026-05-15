@@ -8,7 +8,17 @@ const state = {
   answerRevealed: false,
 };
 
-const excludedQuizNames = new Set(["최중명", "이찬", "박준호", "최종현", "박승영", "왕박락"]);
+const excludedQuizNames = new Set([
+  "최중명",
+  "이찬",
+  "박준호",
+  "최종현",
+  "박승영",
+  "왕박락",
+  "이정환",
+  "유성준",
+  "조승윤",
+]);
 
 const isEligibleQuizPerson = (person) =>
   person.image &&
