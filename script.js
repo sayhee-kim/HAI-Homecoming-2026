@@ -26,7 +26,7 @@ const excludedQuizNames = new Set([
 const isEligibleQuizPerson = (person) =>
   person.image &&
   !excludedQuizNames.has(person.name) &&
-  (person.group === "alumni" || person.role === "Ph.D. student");
+  (person.group === "professor" || person.group === "alumni" || person.role === "Ph.D. student");
 
 const uniqueNames = (people) => [...new Set(people.map((person) => person.name).filter(Boolean))];
 
