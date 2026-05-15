@@ -140,7 +140,7 @@
     "image": "assets/people/020-박승영.jpg"
   },
   {
-    "name": "Visiting Student",
+    "name": "Fengmiao Tu",
     "englishName": "Fengmiao Tu",
     "role": "Ph.D. student",
     "group": "current",
@@ -219,77 +219,77 @@
   {
     "name": "최현희",
     "englishName": "Hyunhee Choi",
-    "role": "Ph.D. Alumni August 2024 Doctoral Dissertation Multi-Timescale Electromechanical Identification and Stress-Reflective Modeling of Lithium-Ion Battery for Reliability-Based Design",
+    "role": "Ph.D. Alumni August 2024",
     "group": "alumni",
     "image": "assets/people/032-최현희.png"
   },
   {
     "name": "김형민",
     "englishName": "Hyeongmin Kim",
-    "role": "Ph.D. Alumni February 2024 Doctoral Dissertation Motor fault scale-focused feature learning considering operation variability and diagnosis uncertainty",
+    "role": "Ph.D. Alumni February 2024",
     "group": "alumni",
     "image": "assets/people/033-김형민.png"
   },
   {
     "name": "김수지",
     "englishName": "Su J. Kim",
-    "role": "Ph.D. Alumni August 2022 Doctoral Dissertation Investigation on Fault Information Extraction for Acoustic Emission based Rolling Element Bearing Diagnostics under Noisy Conditions",
+    "role": "Ph.D. Alumni August 2022",
     "group": "alumni",
     "image": "assets/people/034-김수지.png"
   },
   {
     "name": "박찬희",
     "englishName": "Chan Hee Park",
-    "role": "Ph.D. Alumni February 2022 Doctoral Dissertation Physics-guided Deep Learning Study for Fault Diagnostics of Industrial Motors Under Variable Operating Conditions Using Stator Current Signals",
+    "role": "Ph.D. Alumni February 2022",
     "group": "alumni",
     "image": "assets/people/035-박찬희.jpg"
   },
   {
     "name": "김원곤",
     "englishName": "Wongon Kim",
-    "role": "Ph.D. Alumni February 2022 Doctoral Dissertation Investigation on Statistical Model Calibration and Updating of Physics and Data-driven Modeling for Hybrid Digital Twin",
+    "role": "Ph.D. Alumni February 2022",
     "group": "alumni",
     "image": "assets/people/036-김원곤.png"
   },
   {
     "name": "박정호",
     "englishName": "Jungho Park",
-    "role": "Ph.D. Alumni August 2019 Doctoral Dissertation Fault Diagnostics of Planetary Gears under Variable-speed Conditions Using Time-frequency Analysis",
+    "role": "Ph.D. Alumni August 2019",
     "group": "alumni",
     "image": "assets/people/037-박정호.jpg"
   },
   {
     "name": "정준하",
     "englishName": "Joon Ha Jung",
-    "role": "Ph.D. Alumni February 2019 Doctoral Dissertation Investigation on Preprocessing and Transformation of Vibration Signals for Deep Learning Based Diagnosis of Rotating Machinery",
+    "role": "Ph.D. Alumni February 2019",
     "group": "alumni",
     "image": "assets/people/038-정준하.png"
   },
   {
     "name": "윤헌준",
     "englishName": "Heonjun Yoon",
-    "role": "Ph.D. Alumni February 2018 Doctoral Dissertation Modeling and Analysis of Piezoelectric Vibration Energy Harvesting Devices under Operating and Manufacturing Uncertainties",
+    "role": "Ph.D. Alumni February 2018",
     "group": "alumni",
     "image": "assets/people/039-윤헌준.jpg"
   },
   {
     "name": "하종문",
     "englishName": "Jong Moon Ha",
-    "role": "Ph.D. Alumni August 2017 Doctoral Dissertation Robust Vibration-Based Fault Diagnosis of a Planetary Gearbox under Environmental and Operational Uncertainties",
+    "role": "Ph.D. Alumni August 2017",
     "group": "alumni",
     "image": "assets/people/040-하종문.gif"
   },
   {
     "name": "이현찬",
     "englishName": "Hyeonchan Lee",
-    "role": "M.S. Alumni February 2022 Master's Thesis A New Initial Point Search Algorithm for Bayesian Calibration with Insufficient Statistical Information: Greedy Stochastic Section Search",
+    "role": "M.S. Alumni February 2022",
     "group": "alumni",
     "image": "assets/people/041-이현찬.jpg"
   },
   {
     "name": "윤명백",
     "englishName": "Myeongbaek Youn",
-    "role": "M.S. Alumni August 2020 Master's Thesis A Weighted Residual Rényi Information (WRRI) for Detecting Fault Feature of Motor and Gearbox in Linear Time-Frequency Representation",
+    "role": "M.S. Alumni August 2020",
     "group": "alumni",
     "image": "assets/people/042-윤명백.jpg"
   }

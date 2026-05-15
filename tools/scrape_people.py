@@ -71,6 +71,9 @@ def extract_people_from_list(table: str) -> list[dict[str, str]]:
             english_name = re.sub(r"\s+", " ", match.group(1)).strip()
             korean_name = re.sub(r"\s+", " ", match.group(2)).strip()
             role = re.sub(r"^\d+", "", match.group(3)).strip()
+            if korean_name.lower() in {"visiting student", "ph.d. student", "m.s. student"}:
+                korean_name = english_name
+            role = re.split(r"\s+(Doctoral Dissertation|Master's Thesis|Research field)\s+", role)[0].strip()
             people.append(
                 {
                     "name": korean_name,
