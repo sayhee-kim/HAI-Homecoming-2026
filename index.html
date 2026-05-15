@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAI Homecoming Face Quiz</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <section class="stage-panel" aria-label="얼굴 세그먼트 게임">
+        <header class="topbar">
+          <div>
+            <p>HAI Homecoming</p>
+            <h1>Face Segment Quiz</h1>
+          </div>
+          <div class="scoreboard">
+            <span id="roundLabel">Round 1</span>
+            <strong id="scoreLabel">0</strong>
+          </div>
+        </header>
+
+        <div class="stage" id="stage">
+          <div class="face-guide" aria-hidden="true"></div>
+          <div class="lane lane-eyes"><div class="segment" id="segmentEyes"></div></div>
+          <div class="lane lane-nose"><div class="segment reverse" id="segmentNose"></div></div>
+          <div class="lane lane-mouth"><div class="segment" id="segmentMouth"></div></div>
+        </div>
+
+        <div class="controls">
+          <fieldset class="hint-controls">
+            <legend>Hints</legend>
+            <label><input type="checkbox" id="hintEyes" checked /> 눈</label>
+            <label><input type="checkbox" id="hintNose" /> 코</label>
+            <label><input type="checkbox" id="hintMouth" /> 입</label>
+          </fieldset>
+
+          <label class="speed-control">
+            <span>속도</span>
+            <input id="speedRange" type="range" min="4" max="18" value="9" />
+          </label>
+
+          <button id="nextButton" type="button">다음 문제</button>
+        </div>
+      </section>
+
+      <aside class="answer-panel">
+        <div class="answer-header">
+          <p>정답 선택</p>
+          <h2>누구일까요?</h2>
+        </div>
+        <div class="choices" id="choices"></div>
+        <div class="result" id="result" hidden>
+          <img id="resultImage" alt="" />
+          <div>
+            <p id="resultState"></p>
+            <h3 id="resultName"></h3>
+            <span id="resultRole"></span>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
