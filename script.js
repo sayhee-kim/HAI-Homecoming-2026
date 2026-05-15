@@ -18,6 +18,8 @@ const excludedQuizNames = new Set([
   "이정환",
   "유성준",
   "조승윤",
+  "양준호",
+  "김주현",
 ]);
 
 const isEligibleQuizPerson = (person) =>
