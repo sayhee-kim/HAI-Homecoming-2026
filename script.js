@@ -10,6 +10,13 @@ const state = {
 
 const excludedQuizNames = new Set(["최중명", "이찬", "박준호", "최종현", "박승영", "왕박락"]);
 
+const isEligibleQuizPerson = (person) =>
+  person.image &&
+  !excludedQuizNames.has(person.name) &&
+  (person.group === "alumni" || person.role === "Ph.D. student");
+
+const uniqueNames = (people) => [...new Set(people.map((person) => person.name).filter(Boolean))];
+
 const stage = document.querySelector("#stage");
 const segments = {
   brow: document.querySelector("#segmentBrow"),
@@ -249,11 +256,11 @@ winnerInput.addEventListener("keydown", (event) => {
 fetch("people.json")
   .then((response) => response.json())
   .then((people) => {
-    state.people = people.filter((person) => person.image && !excludedQuizNames.has(person.name));
+    state.people = people.filter(isEligibleQuizPerson);
     playerNames.replaceChildren(
-      ...state.people.map((person) => {
+      ...uniqueNames(people).map((name) => {
         const option = document.createElement("option");
-        option.value = person.name;
+        option.value = name;
         return option;
       }),
     );
