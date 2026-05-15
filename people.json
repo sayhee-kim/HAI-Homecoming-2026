@@ -8,7 +8,7 @@
     "image": "assets/processed/001-윤병동.jpg",
     "segments": {
       "brow": [
-        0.21,
+        0.0,
         0.235
       ],
       "eyes": [
@@ -35,7 +35,7 @@
     "image": "assets/processed/002-Xi-Xiaopeng.jpg",
     "segments": {
       "brow": [
-        0.293,
+        0.0,
         0.353
       ],
       "eyes": [
@@ -62,7 +62,7 @@
     "image": "assets/processed/003-채민석.jpg",
     "segments": {
       "brow": [
-        0.277,
+        0.0,
         0.337
       ],
       "eyes": [
@@ -89,7 +89,7 @@
     "image": "assets/processed/004-김성종.jpg",
     "segments": {
       "brow": [
-        0.257,
+        0.0,
         0.317
       ],
       "eyes": [
@@ -116,7 +116,7 @@
     "image": "assets/processed/005-유진오.jpg",
     "segments": {
       "brow": [
-        0.286,
+        0.0,
         0.346
       ],
       "eyes": [
@@ -143,7 +143,7 @@
     "image": "assets/processed/006-김태형.jpg",
     "segments": {
       "brow": [
-        0.287,
+        0.0,
         0.347
       ],
       "eyes": [
@@ -170,7 +170,7 @@
     "image": "assets/processed/007-김태훈.jpg",
     "segments": {
       "brow": [
-        0.329,
+        0.0,
         0.391
       ],
       "eyes": [
@@ -197,7 +197,7 @@
     "image": "assets/processed/008-이상경.jpg",
     "segments": {
       "brow": [
-        0.308,
+        0.0,
         0.368
       ],
       "eyes": [
@@ -224,7 +224,7 @@
     "image": "assets/processed/009-김용채.jpg",
     "segments": {
       "brow": [
-        0.243,
+        0.0,
         0.268
       ],
       "eyes": [
@@ -251,7 +251,7 @@
     "image": "assets/processed/010-김민재.jpg",
     "segments": {
       "brow": [
-        0.253,
+        0.0,
         0.313
       ],
       "eyes": [
@@ -278,7 +278,7 @@
     "image": "assets/processed/011-박종혁.jpg",
     "segments": {
       "brow": [
-        0.259,
+        0.0,
         0.319
       ],
       "eyes": [
@@ -305,7 +305,7 @@
     "image": "assets/processed/012-권경륜.jpg",
     "segments": {
       "brow": [
-        0.298,
+        0.0,
         0.36
       ],
       "eyes": [
@@ -332,7 +332,7 @@
     "image": "assets/processed/013-양준호.jpg",
     "segments": {
       "brow": [
-        0.279,
+        0.0,
         0.348
       ],
       "eyes": [
@@ -359,7 +359,7 @@
     "image": "assets/processed/014-김주현.jpg",
     "segments": {
       "brow": [
-        0.266,
+        0.0,
         0.326
       ],
       "eyes": [
@@ -386,7 +386,7 @@
     "image": "assets/processed/015-이정환.jpg",
     "segments": {
       "brow": [
-        0.238,
+        0.0,
         0.258
       ],
       "eyes": [
@@ -413,7 +413,7 @@
     "image": "assets/processed/016-유성준.jpg",
     "segments": {
       "brow": [
-        0.304,
+        0.0,
         0.364
       ],
       "eyes": [
@@ -440,7 +440,7 @@
     "image": "assets/processed/017-김민태.jpg",
     "segments": {
       "brow": [
-        0.293,
+        0.0,
         0.318
       ],
       "eyes": [
@@ -467,7 +467,7 @@
     "image": "assets/processed/018-조승윤.jpg",
     "segments": {
       "brow": [
-        0.337,
+        0.0,
         0.403
       ],
       "eyes": [
@@ -494,7 +494,7 @@
     "image": "assets/processed/019-이용민.jpg",
     "segments": {
       "brow": [
-        0.24,
+        0.0,
         0.3
       ],
       "eyes": [
@@ -521,7 +521,7 @@
     "image": "assets/processed/020-박승영.jpg",
     "segments": {
       "brow": [
-        0.263,
+        0.0,
         0.323
       ],
       "eyes": [
@@ -548,7 +548,7 @@
     "image": "assets/processed/021-Fengmiao-Tu.jpg",
     "segments": {
       "brow": [
-        0.227,
+        0.0,
         0.287
       ],
       "eyes": [
@@ -575,7 +575,7 @@
     "image": "assets/processed/022-한주환.jpg",
     "segments": {
       "brow": [
-        0.267,
+        0.0,
         0.327
       ],
       "eyes": [
@@ -602,7 +602,7 @@
     "image": "assets/processed/023-주나라.jpg",
     "segments": {
       "brow": [
-        0.272,
+        0.0,
         0.292
       ],
       "eyes": [
@@ -629,7 +629,7 @@
     "image": "assets/processed/024-임우리.jpg",
     "segments": {
       "brow": [
-        0.275,
+        0.0,
         0.3
       ],
       "eyes": [
@@ -656,7 +656,7 @@
     "image": "assets/processed/025-김세희.jpg",
     "segments": {
       "brow": [
-        0.288,
+        0.0,
         0.31
       ],
       "eyes": [
@@ -683,7 +683,7 @@
     "image": "assets/processed/026-최중명.jpg",
     "segments": {
       "brow": [
-        0.309,
+        0.0,
         0.379
       ],
       "eyes": [
@@ -710,7 +710,7 @@
     "image": "assets/processed/027-최종현.jpg",
     "segments": {
       "brow": [
-        0.35,
+        0.0,
         0.428
       ],
       "eyes": [
@@ -737,7 +737,7 @@
     "image": "assets/processed/028-박준호.jpg",
     "segments": {
       "brow": [
-        0.336,
+        0.0,
         0.398
       ],
       "eyes": [
@@ -764,7 +764,7 @@
     "image": "assets/processed/029-왕박락.jpg",
     "segments": {
       "brow": [
-        0.334,
+        0.0,
         0.397
       ],
       "eyes": [
@@ -791,7 +791,7 @@
     "image": "assets/processed/030-정의일.jpg",
     "segments": {
       "brow": [
-        0.278,
+        0.0,
         0.303
       ],
       "eyes": [
@@ -818,7 +818,7 @@
     "image": "assets/processed/031-이찬.jpg",
     "segments": {
       "brow": [
-        0.287,
+        0.0,
         0.347
       ],
       "eyes": [
@@ -845,7 +845,7 @@
     "image": "assets/processed/032-최현희.jpg",
     "segments": {
       "brow": [
-        0.29,
+        0.0,
         0.35
       ],
       "eyes": [
@@ -872,7 +872,7 @@
     "image": "assets/processed/033-김형민.jpg",
     "segments": {
       "brow": [
-        0.288,
+        0.0,
         0.348
       ],
       "eyes": [
@@ -899,7 +899,7 @@
     "image": "assets/processed/034-김수지.jpg",
     "segments": {
       "brow": [
-        0.269,
+        0.0,
         0.329
       ],
       "eyes": [
@@ -926,7 +926,7 @@
     "image": "assets/processed/035-박찬희.jpg",
     "segments": {
       "brow": [
-        0.281,
+        0.0,
         0.341
       ],
       "eyes": [
@@ -953,7 +953,7 @@
     "image": "assets/processed/036-김원곤.jpg",
     "segments": {
       "brow": [
-        0.297,
+        0.0,
         0.357
       ],
       "eyes": [
@@ -980,7 +980,7 @@
     "image": "assets/processed/037-박정호.jpg",
     "segments": {
       "brow": [
-        0.299,
+        0.0,
         0.359
       ],
       "eyes": [
@@ -1007,7 +1007,7 @@
     "image": "assets/processed/038-정준하.jpg",
     "segments": {
       "brow": [
-        0.246,
+        0.0,
         0.306
       ],
       "eyes": [
@@ -1034,7 +1034,7 @@
     "image": "assets/processed/039-윤헌준.jpg",
     "segments": {
       "brow": [
-        0.35,
+        0.0,
         0.42
       ],
       "eyes": [
@@ -1061,7 +1061,7 @@
     "image": "assets/processed/040-하종문.jpg",
     "segments": {
       "brow": [
-        0.18,
+        0.0,
         0.35
       ],
       "eyes": [
@@ -1088,7 +1088,7 @@
     "image": "assets/processed/041-이현찬.jpg",
     "segments": {
       "brow": [
-        0.342,
+        0.0,
         0.408
       ],
       "eyes": [
@@ -1115,7 +1115,7 @@
     "image": "assets/processed/042-윤명백.jpg",
     "segments": {
       "brow": [
-        0.324,
+        0.0,
         0.384
       ],
       "eyes": [
@@ -1142,7 +1142,7 @@
     "image": "assets/processed/043-윤병동.jpg",
     "segments": {
       "brow": [
-        0.284,
+        0.0,
         0.344
       ],
       "eyes": [

@@ -148,7 +148,7 @@ def cuts_from_face(processed: Image.Image) -> dict[str, list[float]]:
         mouth_bottom = clamp(mouth_bottom, mouth_top + 0.12, 0.92)
 
     return {
-        "brow": [round(brow_top, 3), round(eye_top, 3)],
+        "brow": [0.0, round(eye_top, 3)],
         "eyes": [round(eye_top, 3), round(nose_top, 3)],
         "nose": [round(nose_top, 3), round(mouth_top, 3)],
         "mouth": [round(mouth_top, 3), 1.0],

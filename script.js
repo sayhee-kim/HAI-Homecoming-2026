@@ -62,7 +62,7 @@ const syncSegments = () => {
 
 const setSegmentImage = (person) => {
   const cuts = person.segments || {
-    brow: [0.17, 0.28],
+    brow: [0, 0.28],
     eyes: [0.28, 0.39],
     nose: [0.39, 0.57],
     mouth: [0.57, 0.84],
