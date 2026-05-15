@@ -1,10 +1,10 @@
 const state = {
   people: [],
   answer: null,
-  choices: [],
   round: 0,
-  score: 0,
-  locked: false,
+  scores: new Map(),
+  roundStartedAt: performance.now(),
+  roundClosed: false,
 };
 
 const stage = document.querySelector("#stage");
@@ -21,7 +21,12 @@ const hints = {
   mouth: document.querySelector("#hintMouth"),
 };
 const speedRange = document.querySelector("#speedRange");
-const choicesEl = document.querySelector("#choices");
+const winnerInput = document.querySelector("#winnerInput");
+const playerNames = document.querySelector("#playerNames");
+const awardButton = document.querySelector("#awardButton");
+const voidButton = document.querySelector("#voidButton");
+const endButton = document.querySelector("#endButton");
+const scoreChart = document.querySelector("#scoreChart");
 const result = document.querySelector("#result");
 const resultImage = document.querySelector("#resultImage");
 const resultState = document.querySelector("#resultState");
@@ -40,12 +45,19 @@ const shuffle = (items) => {
   return copy;
 };
 
-const sample = (items, count, excluded) =>
-  shuffle(items.filter((item) => item !== excluded)).slice(0, count);
+const speedDuration = () => 22 - Number(speedRange.value);
 
 const setSpeed = () => {
-  const value = Number(speedRange.value);
-  stage.style.setProperty("--speed", `${22 - value}s`);
+  stage.style.setProperty("--speed", `${speedDuration()}s`);
+  syncSegments();
+};
+
+const syncSegments = () => {
+  const elapsed = (performance.now() - state.roundStartedAt) / 1000;
+  const delay = -(elapsed % speedDuration());
+  Object.values(segments).forEach((segment) => {
+    segment.style.animationDelay = `${delay}s`;
+  });
 };
 
 const setSegmentImage = (person) => {
@@ -66,62 +78,133 @@ const setSegmentImage = (person) => {
     segment.offsetHeight;
     segment.style.animation = "";
   });
+  syncSegments();
 };
 
 const updateHints = () => {
+  syncSegments();
   Object.entries(hints).forEach(([key, input]) => {
     segments[key].classList.toggle("active", input.checked);
   });
 };
 
-const renderChoices = () => {
-  choicesEl.replaceChildren();
-  state.choices.forEach((person) => {
-    const button = document.createElement("button");
-    button.className = "choice";
-    button.type = "button";
-    button.textContent = person.name;
-    button.addEventListener("click", () => choose(person, button));
-    choicesEl.appendChild(button);
+const totalScore = () => [...state.scores.values()].reduce((sum, score) => sum + score, 0);
+
+const sortedScores = () =>
+  [...state.scores.entries()].sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0], "ko"));
+
+const renderScores = () => {
+  const rows = sortedScores();
+  scoreLabel.textContent = totalScore();
+  scoreChart.replaceChildren();
+
+  if (rows.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "empty-chart";
+    empty.textContent = "아직 등록된 정답자가 없습니다.";
+    scoreChart.appendChild(empty);
+    return;
+  }
+
+  const maxScore = Math.max(...rows.map(([, score]) => score));
+  rows.forEach(([name, score], index) => {
+    const row = document.createElement("div");
+    row.className = "score-row";
+    if (index < 5) row.classList.add("top-rank");
+
+    const rank = document.createElement("span");
+    rank.className = "rank";
+    rank.textContent = `${index + 1}`;
+
+    const nameEl = document.createElement("strong");
+    nameEl.textContent = name;
+
+    const barWrap = document.createElement("div");
+    barWrap.className = "bar-wrap";
+    const bar = document.createElement("div");
+    bar.className = "bar";
+    bar.style.width = `${Math.max((score / maxScore) * 100, 12)}%`;
+    barWrap.appendChild(bar);
+
+    const scoreEl = document.createElement("span");
+    scoreEl.className = "points";
+    scoreEl.textContent = `${score}`;
+
+    row.append(rank, nameEl, barWrap, scoreEl);
+    scoreChart.appendChild(row);
   });
 };
 
-const choose = (person, button) => {
-  if (state.locked) return;
-  state.locked = true;
-
-  const isCorrect = person === state.answer;
-  if (isCorrect) state.score += 1;
-  scoreLabel.textContent = state.score;
-
-  document.querySelectorAll(".choice").forEach((choice) => {
-    const isAnswer = choice.textContent === state.answer.name;
-    choice.classList.toggle("correct", isAnswer);
-    choice.disabled = true;
-  });
-  if (!isCorrect) button.classList.add("wrong");
-
+const showAnswer = (label) => {
   result.hidden = false;
   resultImage.src = state.answer.image;
   resultImage.alt = `${state.answer.name} 사진`;
-  resultState.textContent = isCorrect ? "정답!" : "아쉽습니다";
+  resultState.textContent = label;
   resultName.textContent = state.answer.name;
   resultRole.textContent = state.answer.role;
 };
 
+const closeRound = (label) => {
+  state.roundClosed = true;
+  showAnswer(label);
+};
+
+const awardPoint = () => {
+  if (state.roundClosed) return;
+  const name = winnerInput.value.trim();
+  if (!name) {
+    winnerInput.focus();
+    return;
+  }
+  state.scores.set(name, (state.scores.get(name) || 0) + 1);
+  winnerInput.value = "";
+  renderScores();
+  closeRound("이번 정답");
+};
+
+const voidRound = () => {
+  if (state.roundClosed) return;
+  winnerInput.value = "";
+  closeRound("무효 처리");
+};
+
+const timestamp = () => {
+  const now = new Date();
+  const pad = (value) => String(value).padStart(2, "0");
+  return `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}`;
+};
+
+const endGame = () => {
+  const topFive = sortedScores().slice(0, 5);
+  const title = timestamp();
+  const lines = [
+    `HAI Homecoming Face Quiz TOP 5`,
+    title,
+    "",
+    ...topFive.map(([name, score], index) => `${index + 1}. ${name} - ${score}`),
+  ];
+  const blob = new Blob([`${lines.join("\n")}\n`], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = `${title}_top5.txt`;
+  link.click();
+  URL.revokeObjectURL(url);
+};
+
 const nextRound = () => {
-  if (state.people.length < 4) {
-    choicesEl.textContent = "사람 데이터가 부족합니다. 먼저 사진을 수집해 주세요.";
+  if (state.people.length === 0) {
+    scoreChart.textContent = "사람 데이터가 부족합니다. 먼저 사진을 수집해 주세요.";
     return;
   }
 
   state.round += 1;
-  state.locked = false;
+  state.roundClosed = false;
+  state.roundStartedAt = performance.now();
   result.hidden = true;
+  winnerInput.value = "";
 
   state.answer = shuffle(state.people)[0];
-  state.choices = shuffle([state.answer, ...sample(state.people, 3, state.answer)]);
-
   hints.brow.checked = true;
   hints.eyes.checked = false;
   hints.nose.checked = false;
@@ -129,21 +212,34 @@ const nextRound = () => {
 
   setSegmentImage(state.answer);
   updateHints();
-  renderChoices();
   roundLabel.textContent = `Round ${state.round}`;
 };
 
 Object.values(hints).forEach((input) => input.addEventListener("change", updateHints));
 speedRange.addEventListener("input", setSpeed);
 nextButton.addEventListener("click", nextRound);
+awardButton.addEventListener("click", awardPoint);
+voidButton.addEventListener("click", voidRound);
+endButton.addEventListener("click", endGame);
+winnerInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") awardPoint();
+});
 
 fetch("people.json")
   .then((response) => response.json())
   .then((people) => {
     state.people = people.filter((person) => person.image);
+    playerNames.replaceChildren(
+      ...state.people.map((person) => {
+        const option = document.createElement("option");
+        option.value = person.name;
+        return option;
+      }),
+    );
     setSpeed();
+    renderScores();
     nextRound();
   })
   .catch(() => {
-    choicesEl.textContent = "people.json을 불러오지 못했습니다. 수집 스크립트를 먼저 실행해 주세요.";
+    scoreChart.textContent = "people.json을 불러오지 못했습니다. 수집 스크립트를 먼저 실행해 주세요.";
   });

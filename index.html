@@ -48,14 +48,26 @@
 
       <aside class="answer-panel">
         <div class="answer-header">
-          <p>정답 선택</p>
-          <h2>누구일까요?</h2>
+          <p>Scoreboard</p>
+          <h2>진행 패널</h2>
         </div>
-        <div class="choices" id="choices"></div>
+        <div class="judge-panel">
+          <label class="winner-field">
+            <span>정답자</span>
+            <input id="winnerInput" type="text" list="playerNames" placeholder="이름 입력" autocomplete="off" />
+            <datalist id="playerNames"></datalist>
+          </label>
+          <div class="judge-actions">
+            <button id="awardButton" type="button">정답자 등록</button>
+            <button id="voidButton" type="button">무효</button>
+            <button id="endButton" type="button">END</button>
+          </div>
+        </div>
+        <div class="score-chart" id="scoreChart"></div>
         <div class="result" id="result" hidden>
           <img id="resultImage" alt="" />
           <div>
-            <p id="resultState"></p>
+            <p id="resultState">이번 정답</p>
             <h3 id="resultName"></h3>
             <span id="resultRole"></span>
           </div>

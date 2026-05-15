@@ -208,7 +208,9 @@ input {
 }
 
 #nextButton,
-.choice {
+#awardButton,
+#voidButton,
+#endButton {
   min-height: 42px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -218,42 +220,144 @@ input {
   cursor: pointer;
 }
 
-#nextButton {
+#nextButton,
+#awardButton {
   padding: 0 18px;
   color: #fff;
   background: var(--blue);
   border-color: var(--blue);
 }
 
+#voidButton,
+#endButton {
+  padding: 0 14px;
+}
+
+#voidButton {
+  color: var(--bad);
+  background: #fff5f4;
+  border-color: rgba(180, 35, 24, 0.24);
+}
+
+#endButton {
+  color: var(--ink);
+  background: #f8fafc;
+}
+
 .answer-panel {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   min-height: calc(100vh - 44px);
   padding: 24px;
 }
 
-.choices {
+.judge-panel {
   display: grid;
-  align-content: start;
-  gap: 10px;
+  gap: 12px;
   margin-top: 20px;
 }
 
-.choice {
-  padding: 0 14px;
-  text-align: left;
+.winner-field {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 900;
 }
 
-.choice.correct {
-  border-color: rgba(19, 121, 91, 0.35);
-  background: #e9f7f1;
-  color: var(--good);
+.winner-field input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
 }
 
-.choice.wrong {
-  border-color: rgba(180, 35, 24, 0.32);
-  background: #fff0ee;
-  color: var(--bad);
+.winner-field input:focus {
+  border-color: rgba(31, 93, 168, 0.58);
+  box-shadow: 0 0 0 3px rgba(31, 93, 168, 0.12);
+}
+
+.judge-actions {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+}
+
+.score-chart {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  margin-top: 22px;
+  min-height: 220px;
+}
+
+.empty-chart {
+  margin: 0;
+  padding: 18px;
+  color: var(--muted);
+  background: var(--soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 800;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 28px minmax(72px, 0.9fr) minmax(80px, 1.2fr) 28px;
+  gap: 8px;
+  align-items: center;
+  min-height: 42px;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.score-row.top-rank {
+  border-color: rgba(31, 93, 168, 0.32);
+  background: #f5f9ff;
+}
+
+.rank {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  color: var(--blue);
+  background: #e9f2ff;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.score-row strong {
+  overflow: hidden;
+  font-size: 0.95rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-wrap {
+  height: 12px;
+  overflow: hidden;
+  background: #e8eef6;
+  border-radius: 999px;
+}
+
+.bar {
+  height: 100%;
+  background: linear-gradient(90deg, #1f5da8, #62a3d8);
+  border-radius: inherit;
+  transition: width 220ms ease;
+}
+
+.points {
+  color: var(--blue);
+  font-weight: 900;
+  text-align: right;
 }
 
 .result {
@@ -325,5 +429,9 @@ input {
   .stage {
     --face-width: min(76vw, 300px);
     min-height: 480px;
+  }
+
+  .judge-actions {
+    grid-template-columns: 1fr;
   }
 }
