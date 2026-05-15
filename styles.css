@@ -123,39 +123,18 @@ input {
   transform: translate(-50%, -50%);
 }
 
-.lane {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  overflow: visible;
-}
-
-.lane-eyes {
-  top: calc(50% - var(--face-height) / 2);
-  height: calc(var(--face-height) * 0.42);
-}
-
-.lane-nose {
-  top: calc(50% - var(--face-height) / 2 + var(--face-height) * 0.42);
-  height: calc(var(--face-height) * 0.2);
-}
-
-.lane-mouth {
-  top: calc(50% - var(--face-height) / 2 + var(--face-height) * 0.62);
-  height: calc(var(--face-height) * 0.38);
-}
-
 .segment {
   position: absolute;
-  top: 0;
+  top: calc(50% - var(--face-height) / 2);
   left: 0;
   display: none;
   width: var(--face-width);
-  height: 100%;
+  height: calc(var(--face-height) * 0.12);
   overflow: hidden;
   border-radius: 8px;
   background-repeat: no-repeat;
   background-size: var(--face-width) var(--face-height);
+  background-position-x: 0;
   box-shadow: 0 10px 28px rgba(20, 32, 51, 0.2);
   animation: sweep var(--speed) linear infinite;
 }
@@ -166,18 +145,6 @@ input {
 
 .segment.reverse {
   animation-name: sweep-reverse;
-}
-
-#segmentEyes {
-  background-position: 0 0;
-}
-
-#segmentNose {
-  background-position: 0 calc(var(--face-height) * -0.42);
-}
-
-#segmentMouth {
-  background-position: 0 calc(var(--face-height) * -0.62);
 }
 
 @keyframes sweep {

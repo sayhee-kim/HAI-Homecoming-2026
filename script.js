@@ -9,11 +9,13 @@ const state = {
 
 const stage = document.querySelector("#stage");
 const segments = {
+  brow: document.querySelector("#segmentBrow"),
   eyes: document.querySelector("#segmentEyes"),
   nose: document.querySelector("#segmentNose"),
   mouth: document.querySelector("#segmentMouth"),
 };
 const hints = {
+  brow: document.querySelector("#hintBrow"),
   eyes: document.querySelector("#hintEyes"),
   nose: document.querySelector("#hintNose"),
   mouth: document.querySelector("#hintMouth"),
@@ -47,8 +49,19 @@ const setSpeed = () => {
 };
 
 const setSegmentImage = (person) => {
-  Object.values(segments).forEach((segment) => {
+  const cuts = person.segments || {
+    brow: [0.17, 0.28],
+    eyes: [0.28, 0.39],
+    nose: [0.39, 0.57],
+    mouth: [0.57, 0.84],
+  };
+
+  Object.entries(segments).forEach(([key, segment]) => {
+    const [top, bottom] = cuts[key];
     segment.style.backgroundImage = `url("${person.image}")`;
+    segment.style.top = `calc(50% - var(--face-height) / 2 + var(--face-height) * ${top})`;
+    segment.style.height = `calc(var(--face-height) * ${bottom - top})`;
+    segment.style.backgroundPositionY = `calc(var(--face-height) * -${top})`;
     segment.style.animation = "none";
     segment.offsetHeight;
     segment.style.animation = "";
@@ -109,7 +122,8 @@ const nextRound = () => {
   state.answer = shuffle(state.people)[0];
   state.choices = shuffle([state.answer, ...sample(state.people, 3, state.answer)]);
 
-  hints.eyes.checked = true;
+  hints.brow.checked = true;
+  hints.eyes.checked = false;
   hints.nose.checked = false;
   hints.mouth.checked = false;
 

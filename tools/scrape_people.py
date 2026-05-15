@@ -175,7 +175,8 @@ def main() -> None:
         filename = safe_filename(person["name"] or person["englishName"], index, suffix)
         path = ASSET_DIR / filename
         download(person["imageUrl"], path)
-        person["image"] = path.relative_to(ROOT).as_posix()
+        person["rawImage"] = path.relative_to(ROOT).as_posix()
+        person["image"] = person["rawImage"]
         person.pop("imageUrl", None)
 
     DATA_PATH.write_text(json.dumps(deduped, ensure_ascii=False, indent=2), encoding="utf-8")

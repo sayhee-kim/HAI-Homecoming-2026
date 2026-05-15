@@ -22,15 +22,17 @@
 
         <div class="stage" id="stage">
           <div class="face-guide" aria-hidden="true"></div>
-          <div class="lane lane-eyes"><div class="segment" id="segmentEyes"></div></div>
-          <div class="lane lane-nose"><div class="segment reverse" id="segmentNose"></div></div>
-          <div class="lane lane-mouth"><div class="segment" id="segmentMouth"></div></div>
+          <div class="segment" id="segmentBrow"></div>
+          <div class="segment reverse" id="segmentEyes"></div>
+          <div class="segment" id="segmentNose"></div>
+          <div class="segment reverse" id="segmentMouth"></div>
         </div>
 
         <div class="controls">
           <fieldset class="hint-controls">
             <legend>Hints</legend>
-            <label><input type="checkbox" id="hintEyes" checked /> 눈</label>
+            <label><input type="checkbox" id="hintBrow" checked /> 눈썹</label>
+            <label><input type="checkbox" id="hintEyes" /> 눈</label>
             <label><input type="checkbox" id="hintNose" /> 코</label>
             <label><input type="checkbox" id="hintMouth" /> 입</label>
           </fieldset>

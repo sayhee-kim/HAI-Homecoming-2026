@@ -2,3 +2,4 @@
 템플릿 레퍼런스/
 __pycache__/
 *.pyc
+segment_check*.jpg
